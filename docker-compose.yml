@@ -1,0 +1,47 @@
+services:
+  db:
+    build: ./db
+    container_name: db-container
+    env_file:
+      - ./server/.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: redis-container
+    env_file:
+      - ./server/.env
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ./server
+    container_name: django-container
+    command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - ./server/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/app
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    build: ./client
+    container_name: react-container
+    command: npm run dev -- --host 0.0.0.0
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
