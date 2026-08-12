@@ -16,11 +16,9 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path,include
-
-from server import user_app
+from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/users/", include("user_app.urls"))
+    path("api/v1/users/", include("user_app.urls")),
 ]
