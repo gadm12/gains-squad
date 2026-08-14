@@ -1,11 +1,12 @@
 from rest_framework.views import APIView
-from .models import User
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated
 from .serializers import UserSerializer
+
+# from rest_framework.throttling import UserRateThrottle
 
 
 class SignUp(APIView):
@@ -34,7 +35,7 @@ class LogIn(APIView):
         if not user:
             return Response(
                 "invalid email or password",
-                status=status.HTTP_404_NOT_FOUND,
+                status=status.HTTP_401_UNAUTHORIZED,
             )
         token, _ = Token.objects.get_or_create(user=user)
 
@@ -44,9 +45,28 @@ class LogIn(APIView):
         )
 
 
-class LogOut(APIView):
-    pass
+class UserView(APIView):
+    permission_classes = [IsAuthenticated]
 
 
-class UserInfo(APIView):
-    pass
+class LogOut(UserView):
+    def post(self, request):
+        request.user.auth_token.delete()
+        return Response({"message": "Successfully logged out."})
+
+
+class UserInfo(UserView):
+    def get(self, request):
+        user = request.user
+        return Response(
+            {
+                "id": user.id,
+                "email": user.email,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "date_of_birth": user.date_of_birth,
+                "weight": user.weight,
+                "height": user.height,
+                "date_joined": user.date_joined,
+            }
+        )
