@@ -1,1 +1,77 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0b0c;
+  --color-panel: #19171c;
+  --color-line: #4a444c;
+  --color-paper: #eae7e1;
+  --color-muted: #8f8b8f;
+  --color-scarlet: #b3122a;
+  --color-scarlet-bright: #ff5a4a;
+  --color-gold: #b58f2e;
+
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+}
+
+a,
+button {
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-gold);
+}
+
+/* Signature device: corner-bracket "service record" marks. Color inherits via currentColor. */
+.reticle {
+  position: relative;
+}
+
+.reticle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(currentColor, currentColor) top left / 14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) top left / 2px 14px no-repeat,
+    linear-gradient(currentColor, currentColor) top right / 14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) top right / 2px 14px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left / 14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left / 2px 14px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 2px 14px no-repeat;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-hero-rise {
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-rise {
+    animation: none;
+  }
+}
