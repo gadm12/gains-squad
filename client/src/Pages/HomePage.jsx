@@ -5,11 +5,16 @@ export default function HomePage() {
   const navigate = useNavigate();
   const handleLogout = async () => {
     await userLogOut();
-    navigate("/"); // <= redirect after logout
+    navigate("/");
   };
   return (
     <>
-      <button onClick={handleLogout}>logout</button>
+      <button
+        onClick={handleLogout}
+        className="text-red-500"
+      >
+        logout
+      </button>
     </>
   );
 }

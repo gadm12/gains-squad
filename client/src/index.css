@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
@@ -45,14 +44,22 @@ button:focus-visible {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(currentColor, currentColor) top left / 14px 2px no-repeat,
-    linear-gradient(currentColor, currentColor) top left / 2px 14px no-repeat,
-    linear-gradient(currentColor, currentColor) top right / 14px 2px no-repeat,
-    linear-gradient(currentColor, currentColor) top right / 2px 14px no-repeat,
-    linear-gradient(currentColor, currentColor) bottom left / 14px 2px no-repeat,
-    linear-gradient(currentColor, currentColor) bottom left / 2px 14px no-repeat,
-    linear-gradient(currentColor, currentColor) bottom right / 14px 2px no-repeat,
-    linear-gradient(currentColor, currentColor) bottom right / 2px 14px no-repeat;
+    linear-gradient(currentColor, currentColor) top left /
+      14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) top left /
+      2px 14px no-repeat,
+    linear-gradient(currentColor, currentColor) top right /
+      14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) top right /
+      2px 14px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom
+      left / 14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom
+      left / 2px 14px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom
+      right / 14px 2px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom
+      right / 2px 14px no-repeat;
 }
 
 @keyframes hero-rise {
@@ -67,7 +74,8 @@ button:focus-visible {
 }
 
 .animate-hero-rise {
-  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1)
+    both;
 }
 
 @media (prefers-reduced-motion: reduce) {

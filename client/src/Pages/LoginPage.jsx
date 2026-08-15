@@ -1,5 +1,9 @@
 import clsx from "clsx";
-import { useLocation, useNavigate } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  Link,
+} from "react-router-dom";
 import { useState } from "react";
 import { logIn } from "../services/accounts";
 import {
@@ -9,6 +13,7 @@ import {
   logSign,
   logBtn,
   labelClass,
+  memberClass,
 } from "./styles/tailwindStyles";
 import "./styles/styles.css";
 
@@ -25,12 +30,9 @@ const LoginPage = () => {
     const result = await logIn(email, password);
     console.log(result);
     if (result.user) {
-    navigate("/home"); // <= add this
-  }
-    
+      navigate("/home");
+    }
   };
-
-  
 
   return (
     <>
@@ -69,6 +71,7 @@ const LoginPage = () => {
             type="email"
             name="email"
             id="email"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -79,12 +82,17 @@ const LoginPage = () => {
             className={inputClass}
             type="password"
             id="password"
+            autoComplete="new-password"
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className={logBtn} type="submit">
             {isSignup ? "Create Account" : "Login"}
           </button>
+          <Link className={memberClass} to="/signup">
+            I don't have an account
+          </Link>
         </form>
       </div>
     </>
