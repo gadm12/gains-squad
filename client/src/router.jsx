@@ -6,16 +6,23 @@ import AboutPage from "./Pages/AboutPage";
 import ErrorPage from "./Pages/ErrorPage";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
+import {
+  redirectIfLoggedIn,
+  requireLogin,
+  userConfirmation,
+} from "./services/accounts";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    loader: userConfirmation,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <LoginPage />,
+        loader: redirectIfLoggedIn,
       },
       {
         path: "signup",
@@ -24,6 +31,7 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <HomePage />,
+        loader: requireLogin,
       },
       {
         path: "about",

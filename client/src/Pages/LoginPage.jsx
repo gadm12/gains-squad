@@ -24,7 +24,13 @@ const LoginPage = () => {
     event.preventDefault();
     const result = await logIn(email, password);
     console.log(result);
+    if (result.user) {
+    navigate("/home"); // <= add this
+  }
+    
   };
+
+  
 
   return (
     <>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { redirect } from "react-router-dom";
 
 export const account = axios.create({
   baseURL: "http://127.0.0.1:8000/api/v1/users/",
@@ -63,4 +64,45 @@ export const logIn = async (email, password) => {
       error: errorMessage(error),
     };
   }
+};
+
+export const userConfirmation = async () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return null;
+  }
+  try {
+    const response = await account.get("info/");
+    return response.data.email;
+  } catch (error) {
+    console.error(errorMessage(error));
+    localStorage.removeItem("token");
+    return null;
+  }
+};
+
+export const userLogOut = async () => {
+  try {
+    await account.post("logout/");
+  } catch (error) {
+    console.error(
+      "logout request failed",
+      errorMessage(error),
+    );
+  }
+  localStorage.removeItem("token");
+  return null;
+};
+
+export const requireLogin = async () => {
+  if (!localStorage.getItem("token")) {
+    throw redirect("/");
+  }
+  return null;
+};
+
+export const redirectIfLoggedIn = async () => {
+  return localStorage.getItem("token")
+    ? redirect("home/")
+    : null;
 };
