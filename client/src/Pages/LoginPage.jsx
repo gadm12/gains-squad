@@ -3,6 +3,7 @@ import {
   useLocation,
   useNavigate,
   Link,
+  useOutletContext,
 } from "react-router-dom";
 import { useState } from "react";
 import { logIn } from "../services/accounts";
@@ -18,6 +19,7 @@ import {
 import "./styles/styles.css";
 
 const LoginPage = () => {
+  const { setUser } = useOutletContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { pathname } = useLocation();
@@ -30,6 +32,7 @@ const LoginPage = () => {
     const result = await logIn(email, password);
     console.log(result);
     if (result.user) {
+      setUser(result.user);
       navigate("/home");
     }
   };

@@ -1,15 +1,23 @@
-
-
+import {
+  errorDiv,
+  errorHeader,
+  errorParagraph,
+} from "./styles/tailwindStyles";
 
 export default function ErrorPage() {
-       
-       //!code
-       
+  //!code
+
   return (
     <>
-       
-      <h1>Something went wrong</h1>
-       
+      <div className={errorDiv}>
+        <h1 className={errorHeader}>
+          Something went wrong
+        </h1>
+
+        <p className={errorParagraph}>
+          Please try again later.
+        </p>
+      </div>
     </>
   );
 }

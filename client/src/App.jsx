@@ -1,24 +1,18 @@
 import "./App.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 
-import { useEffect } from "react";
-import { userConfirmation } from "./services/accounts";
+import { useState } from "react";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  useEffect(() => {
-    const checkUser = async () => {
-      const user = await userConfirmation();
+  const loaderUser = useLoaderData();
+  const [user, setUser] = useState(loaderUser);
 
-      console.log("CONFIRMED USER:", user);
-    };
-
-    checkUser();
-  }, []);
   return (
     <>
-      <h1>Gains Squad</h1>
-      <Outlet />
-      
+      <Navbar user={user} setUser={setUser} />
+
+      <Outlet context={{ user, setUser }} />
     </>
   );
 }

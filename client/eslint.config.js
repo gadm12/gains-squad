@@ -18,10 +18,10 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
-    // rules: {
-    //   // remove unused var error
-    //   "no-unused-vars": "warn",
-    // },
+    rules: {
+      // remove unused var error
+      "no-unused-vars": "warn",
+    },
   },
   {
     files: ["cypress/**/*.{js,jsx}"],

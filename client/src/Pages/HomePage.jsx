@@ -1,20 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { userLogOut } from "../services/accounts";
-
 export default function HomePage() {
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    await userLogOut();
-    navigate("/");
-  };
+  //c
+
   return (
     <>
-      <button
-        onClick={handleLogout}
-        className="text-red-500"
-      >
-        logout
-      </button>
+      <div className="flex min-h-screen items-center justify-center">
+        <h1 className="flex text-4xl font-bold text-black text-shadow-lg border-4 bg-indigo-500 bg-clip-border p-3">
+          Main Page
+        </h1>
+      </div>
     </>
   );
 }
