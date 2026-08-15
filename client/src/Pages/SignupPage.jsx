@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { logIn } from "../services/accounts";
+import { signUp } from "../services/accounts";
 import {
   signCard,
   formClass,
@@ -12,7 +12,7 @@ import {
 } from "./styles/tailwindStyles";
 import "./styles/styles.css";
 
-const LoginPage = () => {
+const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { pathname } = useLocation();
@@ -22,7 +22,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const result = await logIn(email, password);
+    const result = await signUp(email, password);
     console.log(result);
   };
 
@@ -41,7 +41,6 @@ const LoginPage = () => {
           >
             Login
           </button>
-
           <button
             onClick={() => navigate("/signup")}
             className={clsx(
@@ -85,4 +84,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;

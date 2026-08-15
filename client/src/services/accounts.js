@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const user = axios.create({
+export const account = axios.create({
   baseURL: "http://127.0.0.1:8000/api/v1/users/",
 });
 
-user.interceptors.request.use((config) => {
+account.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Token ${token}`;
@@ -24,7 +24,7 @@ const errorMessage = (error) => {
 
 export const signUp = async (email, password) => {
   try {
-    const response = await user.post("signup/", {
+    const response = await account.post("signup/", {
       email,
       password,
     });
@@ -36,13 +36,17 @@ export const signUp = async (email, password) => {
     };
   } catch (error) {
     console.error(errorMessage(error));
+    // console.log("FULL ERROR:", error);
+    // console.log("MESSAGE:", error.message);
+    // console.log("RESPONSE:", error.response);
+    // console.log("REQUEST:", error.request);
     return { user: null, error: errorMessage(error) };
   }
 };
 
 export const logIn = async (email, password) => {
   try {
-    const response = await user.post("login/", {
+    const response = await account.post("login/", {
       email,
       password,
     });
