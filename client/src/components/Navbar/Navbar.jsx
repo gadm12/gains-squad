@@ -47,11 +47,21 @@ export default function Navbar({ user, setUser }) {
           <>
             <nav className={navClass}>
               <Link to="/home">
-                <button className={linkClass}>Home</button>
+                <button
+                  data-cy="homeBtn"
+                  className={linkClass}
+                >
+                  Home
+                </button>
               </Link>
 
               <Link to="/about">
-                <button className={linkClass}>About</button>
+                <button
+                  data-cy="aboutBtn"
+                  className={linkClass}
+                >
+                  About
+                </button>
               </Link>
             </nav>
 
@@ -61,6 +71,7 @@ export default function Navbar({ user, setUser }) {
             >
               <input
                 type="text"
+                data-cy="searchInput"
                 placeholder="Search exercise..."
                 value={searchExercise}
                 onChange={(e) =>
@@ -69,7 +80,12 @@ export default function Navbar({ user, setUser }) {
                 className={searchInput}
               />
 
-              <button className={searchBtn}>Search</button>
+              <button
+                data-cy="searchBtn"
+                className={searchBtn}
+              >
+                Search
+              </button>
             </form>
 
             <div className={welcomeClass}>
@@ -77,6 +93,7 @@ export default function Navbar({ user, setUser }) {
             </div>
 
             <button
+              data-cy="logout-btn"
               className={logoutBtn}
               onClick={handleLogout}
             >

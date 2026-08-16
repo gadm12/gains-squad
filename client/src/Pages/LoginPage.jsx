@@ -71,6 +71,7 @@ const LoginPage = () => {
           </label>
           <input
             className={inputClass}
+            data-cy="email"
             type="email"
             name="email"
             id="email"
@@ -83,6 +84,7 @@ const LoginPage = () => {
           </label>
           <input
             className={inputClass}
+            data-cy="password"
             type="password"
             id="password"
             autoComplete="new-password"
@@ -90,7 +92,11 @@ const LoginPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className={logBtn} type="submit">
+          <button
+            data-cy="log-btn"
+            className={logBtn}
+            type="submit"
+          >
             {isSignup ? "Create Account" : "Login"}
           </button>
           <Link className={memberClass} to="/signup">

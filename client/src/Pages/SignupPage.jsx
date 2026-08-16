@@ -11,7 +11,7 @@ import {
   formClass,
   inputClass,
   logSign,
-  logBtn,
+  signUpBtn,
   labelClass,
   memberClass,
 } from "./styles/tailwindStyles";
@@ -64,6 +64,7 @@ const SignupPage = () => {
           </label>
           <input
             className={inputClass}
+            data-cy="email"
             type="email"
             name="email"
             id="email"
@@ -76,6 +77,7 @@ const SignupPage = () => {
           </label>
           <input
             className={inputClass}
+            data-cy="password"
             type="password"
             name="password"
             id="password"
@@ -84,7 +86,11 @@ const SignupPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className={logBtn} type="submit">
+          <button
+            data-cy="signup-btn"
+            className={signUpBtn}
+            type="submit"
+          >
             {isSignup ? "Create Account" : "Login"}
           </button>
           <Link className={memberClass} to="/">

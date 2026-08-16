@@ -22,7 +22,11 @@ export default function NotFoundPage() {
           This page skipped the workout. Let's get you back
           on track.
         </p>
-        <Link className={notFoundLink} to="/">
+        <Link
+          data-cy="notFound-btn"
+          className={notFoundLink}
+          to="/"
+        >
           Back to Gains Squad
         </Link>
       </div>

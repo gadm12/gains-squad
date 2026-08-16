@@ -17,6 +17,9 @@ export const logSign =
 export const logBtn =
   "w-full mt-4 bg-black text-white py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-600";
 
+export const signUpBtn =
+  "w-full mt-4 bg-black text-white py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-600";
+
 export const memberClass = "text-blue-600 hover:underline";
 
 //! Not Found Page
