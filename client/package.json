@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "cy:open": "cypress open",
-    "cy:run": "cypress run --spec",
+    "cy:run": "cypress run", 
     "lint": "eslint .",
     "preview": "vite preview"
   },

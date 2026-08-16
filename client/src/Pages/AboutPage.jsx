@@ -9,7 +9,9 @@ export default function AboutPage() {
 
   return (
     <>
-      <h1 className={aboutHeader}>About Gains Squad</h1>
+      <h1 data-cy="aboutHeader" className={aboutHeader}>
+        About Gains Squad
+      </h1>
       <p className={aboutParagraphOne}>
         Gains Squad is a fitness tracking app designed to
         make planning and tracking workouts simple. Users
@@ -22,7 +24,6 @@ export default function AboutPage() {
       </p>
 
       <p className={aboutParagraphTwo}>
-        
         Gains Squad is also a full-stack software
         development project built with React on the frontend
         and Django REST Framework on the backend. The

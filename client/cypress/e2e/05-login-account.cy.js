@@ -1,5 +1,5 @@
-describe("login", () => {
-  it("login the the account", () => {
+describe("Test 05", () => {
+  it("will test a successful login", () => {
     cy.visit("/");
     cy.get('[data-cy="email"]').type("cypress@test.com");
     cy.get('[data-cy="password"]').type("test123");
