@@ -7,7 +7,22 @@ from .models import (
 )
 
 
+class MuscleGroupSerializer(ModelSerializer):
+    class Meta:
+        model = MuscleGroup
+        fields = "__all__"
+
+
+class ExerciseSerializer(ModelSerializer):
+    muscle_group = MuscleGroupSerializer(read_only=True)
+
+    class Meta:
+        model = Exercise
+        fields = "__all__"
+
+
 class WorkoutSetSerializer(ModelSerializer):
+    exercise = ExerciseSerializer(read_only=True)
 
     class Meta:
         model = WorkoutSet
@@ -22,20 +37,4 @@ class WorkoutSessionSerializer(ModelSerializer):
 
     class Meta:
         model = WorkoutSession
-        fields = "__all__"
-
-
-class MuscleGroupSerializer(ModelSerializer):
-    class Meta:
-        model = MuscleGroup
-        fields = "__all__"
-
-
-class ExerciseSerializer(ModelSerializer):
-    muscle_group = MuscleGroupSerializer(
-        read_only=True,
-    )
-
-    class Meta:
-        model = Exercise
         fields = "__all__"
