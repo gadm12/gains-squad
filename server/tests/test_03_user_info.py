@@ -51,10 +51,10 @@ class TestUserInfo(APITestCase):
                 "mg@mg.com",
             )
             print(
-                "[bold bright_green]✅03- USER INFO TEST PASSED✅[/bold bright_green]"
+                "[bold bright_green] ✅03- USER INFO TEST PASSED✅[/bold bright_green]"
             )
         except AssertionError:
             print(
-                "[bold bright_red]❌03- USER INFO TEST FAILED❌[/bold bright_red]"
+                "[bold bright_red] ❌03- USER INFO TEST FAILED❌[/bold bright_red]"
             )
             raise

@@ -43,11 +43,11 @@ class TestUserLogOut(APITestCase):
             self.assertEqual(len(tokens), 0)
 
             print(
-                "[bold bright_green]✅04- LOGOUT TEST PASSED✅[/bold bright_green]"
+                "[bold bright_green] ✅04- LOGOUT TEST PASSED✅[/bold bright_green]"
             )
 
         except AssertionError:
             print(
-                "[bold bright_red]❌04- LOGOUT TEST FAILED❌[/bold bright_red]"
+                "[bold bright_red] ❌04- LOGOUT TEST FAILED❌[/bold bright_red]"
             )
             raise

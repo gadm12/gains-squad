@@ -37,4 +37,12 @@ class WorkoutSessionSerializer(ModelSerializer):
 
     class Meta:
         model = WorkoutSession
-        fields = "__all__"
+        fields = [
+            "id",
+            "routine",
+            "name",
+            "date",
+            "user",
+            "sets",
+        ]
+        read_only_fields = ["user"]

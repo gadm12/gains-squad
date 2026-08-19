@@ -34,10 +34,10 @@ class TestUserSignUP(TestCase):
                 and b"token" in response.content
             )
             print(
-                "[bold bright_green]✅01- SIGN UP TEST PASSED✅[/bold bright_green]"
+                "[bold bright_green] ✅01- SIGN UP TEST PASSED✅[/bold bright_green]"
             )
         except AssertionError:
             print(
-                "[bold bright_red]❌01- SIGN UP TEST FAILED❌[/bold bright_red]"
+                "[bold bright_red] ❌01- SIGN UP TEST FAILED❌[/bold bright_red]"
             )
             raise

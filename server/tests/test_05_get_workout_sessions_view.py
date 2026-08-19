@@ -6,11 +6,12 @@ from user_app.models import User
 from workout_app.models import WorkoutSession
 
 
-class TestWorkoutSessionView(APITestCase):
+class TestGetWorkoutSessionView(APITestCase):
 
+    # * =-=-= Part 1 =-=-=
     def test_get_workout_sessions(self):
         print(
-            "\n[bright_yellow] 05- get workout sessions view test...[/bright_yellow]"
+            "\n[bright_yellow]05- get workout sessions view test...[/bright_yellow]"
         )
 
         print(
@@ -40,7 +41,7 @@ class TestWorkoutSessionView(APITestCase):
             name="Leg Day",
         )
 
-        response = self.client.get(reverse("workout-sessions"))
+        response = self.client.get(reverse("workout_sessions"))
 
         # print("\nSTATUS:", response.status_code)
         # print("RESPONSE:", response.json())
@@ -61,6 +62,7 @@ class TestWorkoutSessionView(APITestCase):
             )
             raise
 
+    # * =-=-= Part 2 =-=-=
     def test_only_returns_logged_in_users_sessions(self):
 
         print(
@@ -95,7 +97,7 @@ class TestWorkoutSessionView(APITestCase):
             name="User Two Workout",
         )
 
-        response = self.client.get(reverse("workout-sessions"))
+        response = self.client.get(reverse("workout_sessions"))
 
         try:
             self.assertEqual(response.status_code, 200)
@@ -113,12 +115,13 @@ class TestWorkoutSessionView(APITestCase):
             )
             raise
 
+    # * =-=-= Part 3 =-=-=
     def test_requires_authentication(self):
 
         print(
             "\n[bright_blue]    part 3 - requires authentication...[/bright_blue]"
         )
-        response = self.client.get(reverse("workout-sessions"))
+        response = self.client.get(reverse("workout_sessions"))
         try:
             self.assertEqual(response.status_code, 401)
             print(

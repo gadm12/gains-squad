@@ -36,6 +36,10 @@ class WorkoutSession(models.Model):
         related_name="workout_sessions",
     )
 
+    def __str__(self):
+        return (
+            f"{self.routine} | " f"{self.name} | " f"{self.user}"
+        )
 
 
 class MuscleGroup(models.Model):
@@ -44,6 +48,9 @@ class MuscleGroup(models.Model):
         max_length=100,
         unique=True,
     )
+
+    def __str__(self):
+        return f"{self.target_group}"
 
 
 class Exercise(models.Model):
@@ -60,6 +67,8 @@ class Exercise(models.Model):
         related_name="exercises",
     )
 
+    def __str__(self):
+        return f"{self.exercise_name} | {self.muscle_group}"
 
 
 class WorkoutSet(models.Model):
@@ -81,3 +90,11 @@ class WorkoutSet(models.Model):
         null=True,
         blank=True,
     )
+
+    def __str__(self):
+        return (
+            f"{self.exercise} | "
+            f"{self.set_number} | "
+            f"{self.reps} | "
+            f"{self.weight}"
+        )
