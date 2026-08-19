@@ -1,0 +1,41 @@
+from rest_framework.serializers import ModelSerializer
+from .models import (
+    WorkoutSession,
+    WorkoutSet,
+    Exercise,
+    MuscleGroup,
+)
+
+
+class WorkoutSetSerializer(ModelSerializer):
+
+    class Meta:
+        model = WorkoutSet
+        fields = "__all__"
+
+
+class WorkoutSessionSerializer(ModelSerializer):
+    sets = WorkoutSetSerializer(
+        many=True,
+        read_only=True,
+    )
+
+    class Meta:
+        model = WorkoutSession
+        fields = "__all__"
+
+
+class MuscleGroupSerializer(ModelSerializer):
+    class Meta:
+        model = MuscleGroup
+        fields = "__all__"
+
+
+class ExerciseSerializer(ModelSerializer):
+    muscle_group = MuscleGroupSerializer(
+        read_only=True,
+    )
+
+    class Meta:
+        model = Exercise
+        fields = "__all__"
