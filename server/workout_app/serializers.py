@@ -26,7 +26,13 @@ class WorkoutSetSerializer(ModelSerializer):
 
     class Meta:
         model = WorkoutSet
-        fields = "__all__"
+        fields = [
+            "id",
+            "exercise",
+            "set_number",
+            "reps",
+            "weight",
+        ]
 
 
 class WorkoutSessionSerializer(ModelSerializer):

@@ -93,8 +93,9 @@ class WorkoutSet(models.Model):
 
     def __str__(self):
         return (
+            f"{self.id} | "
             f"{self.exercise} | "
-            f"{self.set_number} | "
-            f"{self.reps} | "
-            f"{self.weight}"
+            f"Set {self.set_number} | "
+            f"{self.reps} reps | "
+            f"{self.weight} lbs"
         )
