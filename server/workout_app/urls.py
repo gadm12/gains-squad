@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import (
-    OneWorkoutSessionView,
+from .views.workout_session import (
     WorkoutSessionView,
-    WorkoutSetView,
-    ExerciseView,
+    OneWorkoutSessionView,
 )
+
+from .views.workout_set import WorkoutSetView
+from .views.exercise import ExerciseView
 
 # @ http://127.0.0.1:8000/api/v1/workout/
 
