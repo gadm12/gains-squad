@@ -1,3 +1,4 @@
+from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 from .models import (
     WorkoutSession,
@@ -24,14 +25,25 @@ class ExerciseSerializer(ModelSerializer):
 class WorkoutSetSerializer(ModelSerializer):
     exercise = ExerciseSerializer(read_only=True)
 
+    exercise_id = serializers.PrimaryKeyRelatedField(
+        queryset=Exercise.objects.all(),
+        source="exercise",
+        write_only=True,  
+    )
+
     class Meta:
         model = WorkoutSet
         fields = [
             "id",
             "exercise",
+            "exercise_id",
             "set_number",
             "reps",
             "weight",
+            "workout_session",
+        ]
+        read_only_fields = [
+            "workout_session",
         ]
 
 
