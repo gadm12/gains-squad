@@ -11,6 +11,7 @@ import {
   requireLogin,
   userConfirmation,
 } from "./services/accounts";
+import ExercisePage from "./Pages/ExercisePage";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutPage />,
+      },
+      {
+        path: "exercise/:id",
+        element: <ExercisePage/>
       },
       // {
       //   path: "error",
