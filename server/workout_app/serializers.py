@@ -28,7 +28,7 @@ class WorkoutSetSerializer(ModelSerializer):
     exercise_id = serializers.PrimaryKeyRelatedField(
         queryset=Exercise.objects.all(),
         source="exercise",
-        write_only=True,  
+        write_only=True,
     )
 
     class Meta:
@@ -53,6 +53,8 @@ class WorkoutSessionSerializer(ModelSerializer):
         read_only=True,
     )
 
+    training_volume = serializers.SerializerMethodField()
+
     class Meta:
         model = WorkoutSession
         fields = [
@@ -64,3 +66,11 @@ class WorkoutSessionSerializer(ModelSerializer):
             "sets",
         ]
         read_only_fields = ["user"]
+
+    def get_training_volume(self, obj):
+        total = 0
+
+        for workout_set in obj.sets.all():
+            total += workout_set.weight * workout_set.reps
+
+        return total

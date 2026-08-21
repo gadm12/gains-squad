@@ -29,21 +29,26 @@ export const signUp = async (email, password) => {
       email,
       password,
     });
-    const { user, token } = response.data;
-    localStorage.setItem("token", token);
+
+    const { user } = response.data;
+
     return {
       user,
       error: null,
     };
   } catch (error) {
     console.error(errorMessage(error));
-    // console.log("FULL ERROR:", error);
-    // console.log("MESSAGE:", error.message);
-    // console.log("RESPONSE:", error.response);
-    // console.log("REQUEST:", error.request);
-    return { user: null, error: errorMessage(error) };
+
+    return {
+      user: null,
+      error: errorMessage(error),
+    };
   }
 };
+// console.log("FULL ERROR:", error);
+// console.log("MESSAGE:", error.message);
+// console.log("RESPONSE:", error.response);
+// console.log("REQUEST:", error.request);
 
 export const logIn = async (email, password) => {
   try {

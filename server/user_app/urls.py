@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import SignUp, LogIn, LogOut, UserInfo
 
-#@ http://127.0.0.1:8000/api/v1/users/
+# @ http://127.0.0.1:8000/api/v1/users/
 
 urlpatterns = [
     path("signup/", SignUp.as_view(), name="signup"),

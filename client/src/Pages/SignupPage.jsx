@@ -27,8 +27,12 @@ const SignupPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const result = await signUp(email, password);
-    console.log(result);
+
+    if (result.user) {
+      navigate("/");
+    }
   };
 
   return (
