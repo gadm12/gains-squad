@@ -20,6 +20,16 @@ class WorkoutSetView(Training):
             workout_session__user=user,
         )
 
+    def get(self, request, id):
+        workout_set = self.retrieve_set(
+            id,
+            request.user,
+        )
+
+        serializer = WorkoutSetSerializer(workout_set)
+
+        return Response(serializer.data)
+
     def post(self, request, session_id):
         session = get_object_or_404(
             WorkoutSession,

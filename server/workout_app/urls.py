@@ -21,6 +21,11 @@ urlpatterns = [
         name="a_workout_sessions",
     ),
     path(
+        "sets/<int:id>/",
+        WorkoutSetView.as_view(),
+        name="workout_set",
+    ),
+    path(
         "sessions/<int:id>/sets/",
         WorkoutSetView.as_view(),
         name="workout_sets",

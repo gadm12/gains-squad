@@ -64,6 +64,7 @@ class WorkoutSessionSerializer(ModelSerializer):
             "date",
             "user",
             "sets",
+            "training_volume",
         ]
         read_only_fields = ["user"]
 
@@ -71,6 +72,7 @@ class WorkoutSessionSerializer(ModelSerializer):
         total = 0
 
         for workout_set in obj.sets.all():
-            total += workout_set.weight * workout_set.reps
+            if workout_set.weight:
+                total += workout_set.weight * workout_set.reps
 
-        return total
+        return float(round(total, 2))
