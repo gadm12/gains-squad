@@ -1,5 +1,6 @@
+//! NavBAr
 export const navBanner =
-  "mx-auto mb-8 flex max-w-6xl items-center gap-5 rounded-lg bg-white px-6 py-4 shadow";
+  "mx-auto mt-2 mb-8 flex max-w-6xl items-center gap-5 rounded-lg bg-white px-6 py-4 shadow";
 
 export const gainsClass =
   "text-3xl font-bold text-black whitespace-nowrap";

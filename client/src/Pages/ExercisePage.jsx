@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadSingleExercise } from "../services/exerciseDb";
 import NotFoundPage from "./NotFoundPage";
+import ExerciseCard from "../components/ExerciseDb/ExerciseCard";
 
 const ExercisePage = () => {
   const [singleExercise, setSingleExercise] =
@@ -37,25 +38,7 @@ const ExercisePage = () => {
 
   return (
     <>
-      <h1>{singleExercise.name}</h1>
-      <h3>targets {singleExercise.bodyParts.join(", ")}</h3>
-      <h4>
-        equipment used:{" "}
-        {singleExercise.equipments.join(", ")}
-      </h4>
-      <img
-        src={singleExercise.gifUrl}
-        alt="visual aid not available follow the instructions"
-      />
-      <h4>workout instruction</h4>
-      <hr />
-      <ol className="list-decimal pl-6">
-        {singleExercise.instructions.map(
-          (instruction, index) => (
-            <li key={index}>{instruction}</li>
-          ),
-        )}
-      </ol>
+      <ExerciseCard singleExercise={singleExercise} />
     </>
   );
 };

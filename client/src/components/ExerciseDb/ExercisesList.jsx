@@ -5,6 +5,7 @@ import {
   mainList,
   exerciseName,
   pageButton,
+  twoButtons,
 } from "./styles/tailwindStyles";
 import { Link } from "react-router-dom";
 
@@ -74,20 +75,22 @@ const ExercisesList = () => {
             </li>
           ))}
         </ol>
-        <button
-          className={pageButton}
-          onClick={getPreviousPage}
-          disabled={!previousCursor}
-        >
-          Previous
-        </button>
-        <button
-          className={pageButton}
-          onClick={getNextPage}
-          disabled={!nextCursor}
-        >
-          Next
-        </button>
+        <div className={twoButtons}>
+          <button
+            className={pageButton}
+            onClick={getPreviousPage}
+            disabled={!previousCursor}
+          >
+            Previous
+          </button>
+          <button
+            className={pageButton}
+            onClick={getNextPage}
+            disabled={!nextCursor}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </>
   );
