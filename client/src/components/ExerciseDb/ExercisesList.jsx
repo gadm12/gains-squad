@@ -6,8 +6,11 @@ import {
   exerciseName,
   pageButton,
   twoButtons,
+  textTypeDiv,
+  exerciseListDiv,
 } from "./styles/tailwindStyles";
 import { Link } from "react-router-dom";
+import TextType from "../ReactBits/TextType";
 
 const ExercisesList = () => {
   const [exercise, setExercise] = useState([]);
@@ -17,7 +20,9 @@ const ExercisesList = () => {
 
   useEffect(() => {
     const getExerciseData = async () => {
-      const data = await loadExercise();
+      const data = await loadExercise({
+        limit: 20,
+      });
 
       if (!data) {
         return;
@@ -36,6 +41,7 @@ const ExercisesList = () => {
 
     const data = await loadExercise({
       after: nextCursor,
+      limit: 20,
     });
 
     if (!data) return;
@@ -50,6 +56,7 @@ const ExercisesList = () => {
 
     const data = await loadExercise({
       before: previousCursor,
+      limit: 20,
     });
 
     if (!data) return;
@@ -61,35 +68,49 @@ const ExercisesList = () => {
 
   return (
     <>
-      <div className={exerciseDiv}>
-        <ol className={mainList}>
-          {exercise.map((item) => (
-            <li
-              className={exerciseName}
-              key={item.exerciseId}
+      <div className={exerciseListDiv}>
+        <div className={textTypeDiv}>
+          <TextType
+            text={["Welcome to ExerciseDB Workout Library"]}
+            typingSpeed={50}
+            pauseDuration={5000}
+            showCursor
+            cursorCharacter="▎"
+            deletingSpeed={50}
+            
+            cursorBlinkDuration={0.5}
+          />
+        </div>
+        <div className={exerciseDiv}>
+          <ol className={mainList}>
+            {exercise.map((item) => (
+              <li
+                className={exerciseName}
+                key={item.exerciseId}
+              >
+                {" "}
+                <Link to={`/exercise/${item.exerciseId}`}>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ol>
+          <div className={twoButtons}>
+            <button
+              className={pageButton}
+              onClick={getPreviousPage}
+              disabled={!previousCursor}
             >
-              {" "}
-              <Link to={`/exercise/${item.exerciseId}`}>
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ol>
-        <div className={twoButtons}>
-          <button
-            className={pageButton}
-            onClick={getPreviousPage}
-            disabled={!previousCursor}
-          >
-            Previous
-          </button>
-          <button
-            className={pageButton}
-            onClick={getNextPage}
-            disabled={!nextCursor}
-          >
-            Next
-          </button>
+              Previous
+            </button>
+            <button
+              className={pageButton}
+              onClick={getNextPage}
+              disabled={!nextCursor}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </>

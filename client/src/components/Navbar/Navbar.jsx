@@ -11,9 +11,12 @@ import {
   formClass,
   searchBtn,
   searchInput,
+  warpTextDiv,
 } from "./styles/tailwindStyles";
 import { useState } from "react";
 import clsx from "clsx";
+
+import WarpText from "../ReactBits/WarpText";
 
 export default function Navbar({ user, setUser }) {
   const [searchExercise, setSearchExercise] = useState("");
@@ -32,6 +35,12 @@ export default function Navbar({ user, setUser }) {
     setSearchExercise("");
   };
 
+//   const searchExerciseByName = (name) => {
+//   return exercise.filter((item) =>
+//     item.name.toLowerCase().includes(name.toLowerCase())
+//   );
+// };
+
   const name = user?.split("@")[0];
   return (
     <>
@@ -41,8 +50,26 @@ export default function Navbar({ user, setUser }) {
           !user && "justify-center",
         )}
       >
-        <h3 className={gainsClass}>Gains Squad</h3>
-
+        <div className={warpTextDiv}>
+          <WarpText
+            className={gainsClass}
+            text="Gains Squad"
+            color="#000000"
+            warpStrength={0.08}
+            warpScale={1.7}
+            speed={0.55}
+            pointerInfluence={0.42}
+            pointerStrength={0.36}
+            refraction={0.018}
+            ripple
+            fontSize={90}
+            fontWeight={800}
+            style={{ height: "10px" }}
+            fontFamily="inherit"
+            letterSpacing={-0.06}
+            lineHeight={0.93}
+          />
+        </div>
         {user && (
           <>
             <nav className={navClass}>
@@ -105,3 +132,4 @@ export default function Navbar({ user, setUser }) {
     </>
   );
 }
+

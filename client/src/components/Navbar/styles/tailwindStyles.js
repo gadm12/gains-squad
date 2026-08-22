@@ -1,9 +1,11 @@
 //! NavBAr
 export const navBanner =
-  "mx-auto mt-2 mb-8 flex max-w-6xl items-center gap-5 rounded-lg bg-white px-6 py-4 shadow";
+  "mx-auto p-4 mt-2 mb-8 flex max-w-6xl items-center gap-5 rounded-lg bg-white px-6 py-2 shadow";
+
+export const warpTextDiv = "h-20 w-80 overflow-hidden flex items-center" 
 
 export const gainsClass =
-  "text-3xl font-bold text-black whitespace-nowrap";
+  "text-1xl font-bold text-black whitespace-nowrap";
 
 export const navClass = "flex items-center gap-2";
 

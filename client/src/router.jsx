@@ -12,6 +12,8 @@ import {
   userConfirmation,
 } from "./services/accounts";
 import ExercisePage from "./Pages/ExercisePage";
+import ExerciseListPage from "./Pages/ExerciseListPage";
+import SessionHistory from "./Pages/SessionHistory";
 
 const router = createBrowserRouter([
   {
@@ -40,8 +42,17 @@ const router = createBrowserRouter([
       },
       {
         path: "exercise/:id",
-        element: <ExercisePage/>
+        element: <ExercisePage />,
       },
+      {
+        path: "list",
+        element: <ExerciseListPage />,
+      },
+      {
+        path: "history",
+        element: <SessionHistory />,
+      },
+
       // {
       //   path: "error",
       //   element: <ErrorPage />,

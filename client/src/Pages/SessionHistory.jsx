@@ -1,0 +1,31 @@
+import { useEffect, useState } from "react";
+import { loadSessionsHistory } from "../services/workoutSessions";
+import GetAllSessions from "../components/gainsSquad/GetAllSessions";
+
+const SessionHistory = () => {
+  const [allSessions, setAllSessions] = useState([]);
+  const [session, setSession] = useState();
+
+  useEffect(() => {
+    const getHistory = async () => {
+      const data = await loadSessionsHistory();
+
+      if (!data) {
+        return;
+      }
+      console.log(data);
+      setAllSessions(data);
+    };
+
+    getHistory();
+  }, []);
+
+  return (
+    <>
+      <GetAllSessions allSessions={allSessions} />
+      
+    </>
+  );
+};
+
+export default SessionHistory;
