@@ -25,6 +25,9 @@ const Sidebar = () => {
           <Link className={linkClass} to="/list">
             Exercise Library
           </Link>
+          <Link className={linkClass} to="/calculator">
+            Calories Calculator
+          </Link>
         </div>
       </div>
     </>

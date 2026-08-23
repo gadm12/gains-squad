@@ -16,6 +16,7 @@ import ExerciseListPage from "./Pages/ExerciseListPage";
 import SessionHistory from "./Pages/SessionHistory";
 import SingleSessionPage from "./Pages/SingleSessionPage";
 import CreateSessionPage from "./Pages/CreateSessionPage";
+import CaloriesCalculatorPage from "./Pages/CaloriesCalculatorPage";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "history",
         element: <SessionHistory />,
+      },
+      {
+        path: "calculator",
+        element: <CaloriesCalculatorPage />,
       },
       {
         path: "history/:id",

@@ -1,16 +1,42 @@
 import {
-  sessionsDiv,
   sessionTable,
   sessionHeader,
   sessionRow,
   sessionData,
+  historyTitle,
+  historyDiv,
+  historyWarpTextDiv,
 } from "./styles/tailwindStyles";
+
 import { useNavigate } from "react-router-dom";
+import WarpText from "../ReactBits/WarpText";
 
 const GetAllSessions = ({ allSessions }) => {
   const navigate = useNavigate();
+
   return (
-    <div className={sessionsDiv}>
+    <div className={historyDiv}>
+      <div className={historyWarpTextDiv}>
+        <WarpText
+          className={historyTitle}
+          text="Workout History"
+          color="#FFFFFF"
+          warpStrength={0.08}
+          warpScale={1.7}
+          speed={0.55}
+          pointerInfluence={0.42}
+          pointerStrength={0.36}
+          refraction={0.018}
+          ripple
+          fontSize={60}
+          fontWeight={800}
+          style={{ height: "10px" }}
+          fontFamily="inherit"
+          letterSpacing={-0.06}
+          lineHeight={0.93}
+        />
+      </div>
+
       <table className={sessionTable}>
         <thead>
           <tr>
