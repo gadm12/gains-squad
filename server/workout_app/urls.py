@@ -26,7 +26,7 @@ urlpatterns = [
         name="workout_set",
     ),
     path(
-        "sessions/<int:id>/sets/",
+        "sessions/<int:session_id>/sets/",
         WorkoutSetView.as_view(),
         name="workout_sets",
     ),

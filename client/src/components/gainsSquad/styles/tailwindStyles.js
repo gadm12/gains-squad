@@ -78,3 +78,52 @@ export const goBackDiv = "flex w-full mt-3";
 
 export const backButton =
   "bg-black text-white border-1 border-white rounded-lg px-5 py-1 font-bold hover:bg-white hover:text-black transition-colors cursor-pointer";
+
+//! Workout Set Form
+
+export const workoutSetFormCard =
+  "mx-auto mt-8 max-w-xl rounded-lg border-4 border-yellow-700 bg-black p-6 text-white";
+
+export const workoutSetFormTitle =
+  "mb-5 text-center text-2xl font-bold text-white";
+
+export const workoutSetForm = "flex flex-col gap-3";
+
+export const workoutSetFormLabel =
+  "font-semibold text-yellow-600";
+
+export const workoutSetFormInput =
+  "w-full rounded-md border-2 border-yellow-700 bg-black px-3 py-2 text-white outline-none placeholder:text-gray-500 focus:border-yellow-500";
+
+export const workoutSetFormButton =
+  "mt-3 self-center rounded-md border-2 border-yellow-700 bg-black px-4 py-2 font-semibold text-white transition hover:bg-yellow-700 hover:text-black";
+
+//! Workout Sets List
+
+export const workoutSetsListCard =
+  "mx-auto mt-8 w-fit rounded-lg border-4 border-yellow-700 bg-black p-6 text-white";
+
+export const workoutSetsListTitle =
+  "mb-5 text-center text-2xl font-bold text-white";
+
+export const workoutSetsTable = "w-auto border-collapse";
+
+export const workoutSetsHeader =
+  "whitespace-nowrap border border-yellow-700 px-4 py-3 text-left font-bold text-white";
+
+export const workoutSetsRow = "border border-yellow-700";
+
+export const workoutSetsData =
+  "whitespace-nowrap border border-yellow-700 px-4 py-3 text-white";
+
+export const workoutSetsInput =
+  "w-24 rounded-md border-2 border-yellow-700 bg-black px-2 py-1 text-white outline-none focus:border-yellow-500";
+
+export const workoutSetsEditButton =
+  "mr-2 rounded-md border-2 border-yellow-700 bg-black px-3 py-1 text-sm font-semibold text-white transition hover:bg-yellow-700 hover:text-black";
+
+export const workoutSetsDeleteButton =
+  "rounded-md border-2 border-red-700 bg-black px-3 py-1 text-sm font-semibold text-white transition hover:bg-red-700 hover:text-white";
+
+export const workoutSetsCancelButton =
+  "rounded-md border-2 border-red-700 bg-black px-3 py-1 text-sm font-semibold text-white transition hover:bg-red-700 hover:text-white";

@@ -1,20 +1,38 @@
 import { useEffect, useState } from "react";
+
 import {
   loadSingleSession,
   deleteSession,
   updateSession,
 } from "../services/workoutSessions";
+
+import {
+  createSet,
+  updateSet,
+  deleteSet,
+} from "../services/workoutSets";
+
+import { loadExerciseLibrary } from "../services/exerciseLibrary";
+
 import { useParams, useNavigate } from "react-router-dom";
+
 import NotFoundPage from "./NotFoundPage";
+
 import SingleSession from "../components/gainsSquad/SingleSession";
+import WorkoutSetForm from "../components/gainsSquad/WorkoutSetForm";
+import WorkoutSetsList from "../components/gainsSquad/WorkoutSetsList";
 
 const SingleSessionPage = () => {
   const [session, setSession] = useState(null);
+
+  const [exercises, setExercises] = useState([]); // <= add
+
   const [notFound, setNotFound] = useState(false);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const { id } = useParams();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +51,17 @@ const SingleSessionPage = () => {
     getSingleSession();
   }, [id]);
 
+  // Load saved Django exercises
+  useEffect(() => {
+    const getExercises = async () => {
+      const data = await loadExerciseLibrary();
+
+      setExercises(data);
+    };
+
+    getExercises();
+  }, []);
+
   const handleEdit = () => {
     setEditing(true);
   };
@@ -44,15 +73,15 @@ const SingleSessionPage = () => {
 
   const handleSave = async (formData) => {
     setSaving(true);
+
     const updated = await updateSession(
       session.id,
       formData,
     );
+
     setSaving(false);
 
     if (updated) {
-      setSession(updated);
-      setEditing(false);
       navigate("/history");
     }
   };
@@ -63,6 +92,43 @@ const SingleSessionPage = () => {
     if (deleted) {
       navigate("/history");
     }
+  };
+
+  const handleCreateSet = async (setData) => {
+    const created = await createSet(session.id, setData);
+
+    if (!created) {
+      return;
+    }
+
+    // Reload session so new set + training volume show
+    const refreshed = await loadSingleSession(session.id);
+
+    setSession(refreshed);
+  };
+
+  const handleUpdateSet = async (setId, setData) => {
+    const updated = await updateSet(setId, setData);
+
+    if (!updated) {
+      return;
+    }
+
+    const refreshed = await loadSingleSession(session.id);
+
+    setSession(refreshed);
+  };
+
+  const handleDeleteSet = async (setId) => {
+    const deleted = await deleteSet(setId);
+
+    if (!deleted) {
+      return;
+    }
+
+    const refreshed = await loadSingleSession(session.id);
+
+    setSession(refreshed);
   };
 
   if (notFound) {
@@ -83,6 +149,17 @@ const SingleSessionPage = () => {
         onCancelEdit={handleCancelEdit}
         onSave={handleSave}
         onDelete={handleDelete}
+      />
+
+      <WorkoutSetsList
+        sets={session.sets}
+        onUpdate={handleUpdateSet}
+        onDelete={handleDeleteSet}
+      />
+
+      <WorkoutSetForm
+        exercises={exercises}
+        onSubmit={handleCreateSet}
       />
     </>
   );
