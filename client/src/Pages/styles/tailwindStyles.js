@@ -1,26 +1,28 @@
 //! sign up and login pages
 
 export const signCard =
-  "w-full max-w-md mx-auto mt-20 p-8 bg-white rounded-xl shadow-lg";
+  "w-full max-w-md mx-auto mt-20 p-8 bg-black text-white border-4 border-yellow-700 rounded-xl shadow-lg";
 
 export const inputClass =
-  "w-full px-4 py-3 bg-white text-black border border-gray-300 rounded-lg outline-none focus:border-black";
+  "w-full px-4 py-3 bg-black text-white border-2 border-yellow-700 rounded-lg outline-none placeholder:text-gray-500 focus:border-yellow-500";
 
-export const formClass = "flex flex-col gap-3 mt-6";
+export const formClass =
+  "flex flex-col gap-3 mt-6";
 
 export const labelClass =
-  "text-sm font-medium text-gray-700";
+  "text-sm font-semibold text-yellow-600";
 
 export const logSign =
-  "w-36 py-3 text-lg text-center rounded-lg font-semibold cursor-pointer transition";
+  "w-36 py-3 text-lg text-center rounded-lg font-semibold cursor-pointer border-2 border-yellow-700 transition";
 
 export const logBtn =
-  "w-full mt-4 bg-black text-white py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-600";
+  "w-full mt-4 bg-black text-white border-2 border-yellow-700 py-3 rounded-lg font-semibold cursor-pointer transition hover:bg-yellow-700 hover:text-black";
 
 export const signUpBtn =
-  "w-full mt-4 bg-black text-white py-3 rounded-lg font-semibold cursor-pointer hover:bg-gray-600";
+  "w-full mt-4 bg-black text-white border-2 border-yellow-700 py-3 rounded-lg font-semibold cursor-pointer transition hover:bg-yellow-700 hover:text-black";
 
-export const memberClass = "text-blue-600 hover:underline";
+export const memberClass =
+  "text-yellow-600 hover:text-yellow-500 hover:underline";
 
 //! Not Found Page
 

@@ -44,7 +44,7 @@ const SignupPage = () => {
             className={clsx(
               logSign,
               isSignup
-                ? "bg-gray-200 text-gray-500"
+                ? "bg-gray-500 text-black"
                 : "bg-black text-white",
             )}
           >
@@ -56,7 +56,7 @@ const SignupPage = () => {
               logSign,
               isSignup
                 ? "bg-black text-white"
-                : "bg-gray-200 text-gray-500",
+                : "bg-gray-500 text-black",
             )}
           >
             Sign Up
