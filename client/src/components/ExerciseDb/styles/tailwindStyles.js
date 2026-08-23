@@ -44,4 +44,4 @@ export const instructionLine =
 export const instructionList = "pl-6 space-y-3 mb-8";
 
 export const backButton =
-  "bg-black text-white border-4 border-white rounded-lg px-5 py-2 font-bold hover:bg-white hover:text-black transition-colors cursor-pointer";
+  "ml-auto bg-black text-white border-2 border-yellow-700 rounded-md px-3 py-1 text-sm font-semibold hover:bg-yellow-700 hover:text-black transition-colors cursor-pointer";

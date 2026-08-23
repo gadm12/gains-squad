@@ -15,6 +15,7 @@ import ExercisePage from "./Pages/ExercisePage";
 import ExerciseListPage from "./Pages/ExerciseListPage";
 import SessionHistory from "./Pages/SessionHistory";
 import SingleSessionPage from "./Pages/SingleSessionPage";
+import CreateSessionPage from "./Pages/CreateSessionPage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "exercise/:id",
         element: <ExercisePage />,
+      },
+      {
+        path: "create",
+        element: <CreateSessionPage />,
       },
       {
         path: "list",

@@ -19,6 +19,9 @@ const Sidebar = () => {
           <Link className={linkClass} to="/history">
             Workout History
           </Link>
+          <Link className={linkClass} to="/create">
+            Create Session
+          </Link>
           <Link className={linkClass} to="/list">
             Exercise Library
           </Link>
