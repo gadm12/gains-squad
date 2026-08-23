@@ -39,19 +39,22 @@ const SingleSessionPage = () => {
 
   const handleCancelEdit = () => {
     setEditing(false);
+    navigate("/history");
   };
 
   const handleSave = async (formData) => {
     setSaving(true);
-    const updated = await updateSession(session.id, formData);
+    const updated = await updateSession(
+      session.id,
+      formData,
+    );
     setSaving(false);
 
     if (updated) {
       setSession(updated);
       setEditing(false);
+      navigate("/history");
     }
-    // if updateSession failed it returns null — session stays as-is,
-    // editing stays true so the user doesn't lose their edits
   };
 
   const handleDelete = async () => {

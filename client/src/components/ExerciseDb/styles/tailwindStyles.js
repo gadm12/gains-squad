@@ -39,7 +39,7 @@ export const exerciseDetailImage =
 export const instructionHeader = "text-2xl font-bold mb-2";
 
 export const instructionLine =
-  "border-red-700 border-t-6 mb-4";
+  "border-yellow-700 border-t-6 mb-4";
 
 export const instructionList = "pl-6 space-y-3 mb-8";
 

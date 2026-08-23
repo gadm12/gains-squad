@@ -7,16 +7,17 @@ import {
   singleSessionButtons,
   editSessionButton,
   deleteSessionButton,
+  inputDiv,
+  cancelSessionButton,
 } from "./styles/tailwindStyles";
-import { useNavigate } from "react-router-dom";
 
 const SingleSession = ({
   session,
   saving,
   onSave,
-  onCancel,
+  onCancelEdit,
+  onDelete,
 }) => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: session.name || "",
     date: session.date || "",
@@ -38,7 +39,7 @@ const SingleSession = ({
   return (
     <div className={singleSessionCard}>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+        <div className={inputDiv}>
           <label
             className={singleSessionLabel}
             htmlFor="name"
@@ -56,7 +57,7 @@ const SingleSession = ({
           />
         </div>
 
-        <div className="mb-4">
+        <div className={inputDiv}>
           <label
             className={singleSessionLabel}
             htmlFor="date"
@@ -74,7 +75,7 @@ const SingleSession = ({
           />
         </div>
 
-        <div className="mb-4">
+        <div className={inputDiv}>
           <label
             className={singleSessionLabel}
             htmlFor="routine"
@@ -107,11 +108,19 @@ const SingleSession = ({
 
           <button
             type="button"
-            className={deleteSessionButton}
-            onClick={onCancel}
+            className={cancelSessionButton}
+            onClick={onCancelEdit}
             disabled={saving}
           >
             Cancel
+          </button>
+          <button
+            type="button"
+            className={deleteSessionButton}
+            onClick={onDelete}
+            disabled={saving}
+          >
+            Delete Session
           </button>
         </div>
       </form>

@@ -57,4 +57,4 @@ export const aboutParagraphOne =
   "mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-200";
 
 export const aboutParagraphTwo =
-  "mx-auto mt-6 max-w-3xl border-l-2 border-red-600 pl-5 text-lg leading-8 text-gray-300";
+  "mx-auto mt-6 max-w-3xl border-l-2 border-yellow-600 pl-5 text-lg leading-8 text-gray-300";
