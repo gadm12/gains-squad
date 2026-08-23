@@ -1,21 +1,23 @@
 //! Exercise List
 
-export const exerciseListDiv = "flex flex-col items-center";
+export const exerciseListDiv =
+  "flex flex-col items-center gap-6";
 
 export const textTypeDiv =
-  "text-center text-4xl font-bold text-red-600 mb-8";
+  "text-center text-4xl font-bold text-yellow-500";
 
 export const exerciseDiv =
-  "text-white rounded-lg shadow-md p-6 border-1 border-red-900";
+  "rounded-lg border-4 border-yellow-700 p-6 text-white";
 
-export const mainList = "list-decimal pl-6 space-y-2";
+export const mainList = "list-decimal space-y-2 pl-6";
 
-export const exerciseName = "text-base font-medium";
+export const exerciseName =
+  "text-base font-medium hover:text-yellow-500";
 
-export const twoButtons = "flex gap-1";
+export const twoButtons = "mt-6 flex justify-center gap-3";
 
 export const pageButton =
-  "mt-4 border-1 border-red-900 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed";
+  "rounded-md border-2 border-yellow-700 bg-black px-4 py-2 text-white hover:border-yellow-700 hover:bg-yellow-700 hover:text-black disabled:cursor-not-allowed disabled:border-gray-600 disabled:text-gray-500";
 
 //! Exercise Card
 

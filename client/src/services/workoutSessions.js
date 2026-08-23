@@ -38,3 +38,53 @@ export const loadSessionsHistory = async (params = {}) => {
     console.error(errorMessage(error));
   }
 };
+
+export const loadSingleSession = async (id) => {
+  try {
+    const response = await workoutSessions.get(`${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error(errorMessage(error));
+    return null;
+  }
+};
+
+export const createSession = async (sessionData) => {
+  try {
+    const response = await workoutSessions.post(
+      "",
+      sessionData,
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error(errorMessage(error));
+    return null;
+  }
+};
+
+export const updateSession = async (id, sessionData) => {
+  try {
+    const response = await workoutSessions.patch(
+      `${id}/`,
+      sessionData,
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error(errorMessage(error));
+    return null;
+  }
+};
+
+
+
+export const deleteSession = async (id) => {
+  try {
+    await workoutSessions.delete(`${id}/`);
+    return true;
+  } catch (error) {
+    console.error(errorMessage(error));
+    return false;
+  }
+};

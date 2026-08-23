@@ -4,7 +4,6 @@ import GetAllSessions from "../components/gainsSquad/GetAllSessions";
 
 const SessionHistory = () => {
   const [allSessions, setAllSessions] = useState([]);
-  const [session, setSession] = useState();
 
   useEffect(() => {
     const getHistory = async () => {
@@ -23,7 +22,6 @@ const SessionHistory = () => {
   return (
     <>
       <GetAllSessions allSessions={allSessions} />
-      
     </>
   );
 };

@@ -5,8 +5,10 @@ import {
   sessionRow,
   sessionData,
 } from "./styles/tailwindStyles";
+import { useNavigate } from "react-router-dom";
 
 const GetAllSessions = ({ allSessions }) => {
+  const navigate = useNavigate();
   return (
     <div className={sessionsDiv}>
       <table className={sessionTable}>
@@ -26,10 +28,15 @@ const GetAllSessions = ({ allSessions }) => {
             <tr
               className={sessionRow}
               key={item.id}
+              onClick={() =>
+                navigate(`/history/${item.id}`)
+              }
             >
               <td className={sessionData}>{index + 1}</td>
               <td className={sessionData}>{item.date}</td>
-              <td className={sessionData}>{item.routine}</td>
+              <td className={sessionData}>
+                {item.routine}
+              </td>
               <td className={sessionData}>{item.name}</td>
               <td className={sessionData}>
                 {item.sets.length}

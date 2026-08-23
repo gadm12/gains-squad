@@ -1,0 +1,865 @@
+[
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 1,
+    "fields": {
+      "target_group": "Chest"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 2,
+    "fields": {
+      "target_group": "Shoulders"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 3,
+    "fields": {
+      "target_group": "Triceps"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 4,
+    "fields": {
+      "target_group": "Back"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 5,
+    "fields": {
+      "target_group": "Biceps"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 6,
+    "fields": {
+      "target_group": "Quads"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 7,
+    "fields": {
+      "target_group": "Hamstrings"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 8,
+    "fields": {
+      "target_group": "Glutes"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 9,
+    "fields": {
+      "target_group": "Calves"
+    }
+  },
+  {
+    "model": "workout_app.musclegroup",
+    "pk": 10,
+    "fields": {
+      "target_group": "Core"
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 1,
+    "fields": {
+      "exercise_name": "Barbell Bench Press",
+      "external_id": "ex-bench-001",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 2,
+    "fields": {
+      "exercise_name": "Incline Dumbbell Press",
+      "external_id": "ex-incline-002",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 3,
+    "fields": {
+      "exercise_name": "Cable Chest Fly",
+      "external_id": "ex-fly-003",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 4,
+    "fields": {
+      "exercise_name": "Overhead Shoulder Press",
+      "external_id": "ex-ohp-004",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 5,
+    "fields": {
+      "exercise_name": "Dumbbell Lateral Raise",
+      "external_id": "ex-lateral-005",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 6,
+    "fields": {
+      "exercise_name": "Triceps Pushdown",
+      "external_id": "ex-triceps-006",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 7,
+    "fields": {
+      "exercise_name": "Pull Up",
+      "external_id": "ex-pullup-007",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 8,
+    "fields": {
+      "exercise_name": "Lat Pulldown",
+      "external_id": "ex-lat-008",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 9,
+    "fields": {
+      "exercise_name": "Seated Cable Row",
+      "external_id": "ex-row-009",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 10,
+    "fields": {
+      "exercise_name": "Barbell Row",
+      "external_id": "ex-bbrow-010",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 11,
+    "fields": {
+      "exercise_name": "Face Pull",
+      "external_id": "ex-facepull-011",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 12,
+    "fields": {
+      "exercise_name": "Barbell Curl",
+      "external_id": "ex-curl-012",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 13,
+    "fields": {
+      "exercise_name": "Hammer Curl",
+      "external_id": "ex-hammer-013",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 14,
+    "fields": {
+      "exercise_name": "Back Squat",
+      "external_id": "ex-squat-014",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 15,
+    "fields": {
+      "exercise_name": "Hack Squat",
+      "external_id": "ex-hack-015",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 16,
+    "fields": {
+      "exercise_name": "Leg Press",
+      "external_id": "ex-legpress-016",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 17,
+    "fields": {
+      "exercise_name": "Leg Extension",
+      "external_id": "ex-legext-017",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 18,
+    "fields": {
+      "exercise_name": "Romanian Deadlift",
+      "external_id": "ex-rdl-018",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 19,
+    "fields": {
+      "exercise_name": "Lying Leg Curl",
+      "external_id": "ex-legcurl-019",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 20,
+    "fields": {
+      "exercise_name": "Hip Thrust",
+      "external_id": "ex-hipthrust-020",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 21,
+    "fields": {
+      "exercise_name": "Standing Calf Raise",
+      "external_id": "ex-calf-021",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 22,
+    "fields": {
+      "exercise_name": "Deadlift",
+      "external_id": "ex-deadlift-022",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 23,
+    "fields": {
+      "exercise_name": "Cable Crunch",
+      "external_id": "ex-crunch-023",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "workout_app.exercise",
+    "pk": 24,
+    "fields": {
+      "exercise_name": "Hanging Knee Raise",
+      "external_id": "ex-knee-024",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "workout_app.workoutsession",
+    "pk": 1,
+    "fields": {
+      "routine": "push",
+      "name": "Push Strength",
+      "date": "2026-08-17",
+      "user": 3
+    }
+  },
+  {
+    "model": "workout_app.workoutsession",
+    "pk": 2,
+    "fields": {
+      "routine": "pull",
+      "name": "Pull Strength",
+      "date": "2026-08-18",
+      "user": 3
+    }
+  },
+  {
+    "model": "workout_app.workoutsession",
+    "pk": 3,
+    "fields": {
+      "routine": "legs",
+      "name": "Quad Focus",
+      "date": "2026-08-19",
+      "user": 3
+    }
+  },
+  {
+    "model": "workout_app.workoutsession",
+    "pk": 4,
+    "fields": {
+      "routine": "push",
+      "name": "Push Volume",
+      "date": "2026-08-20",
+      "user": 3
+    }
+  },
+  {
+    "model": "workout_app.workoutsession",
+    "pk": 5,
+    "fields": {
+      "routine": "pull",
+      "name": "Back and Biceps",
+      "date": "2026-08-21",
+      "user": 3
+    }
+  },
+  {
+    "model": "workout_app.workoutsession",
+    "pk": 6,
+    "fields": {
+      "routine": "legs",
+      "name": "Posterior Chain",
+      "date": "2026-08-22",
+      "user": 3
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 1,
+    "fields": {
+      "workout_session": 1,
+      "exercise": 1,
+      "set_number": 1,
+      "reps": 10,
+      "weight": "135.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 2,
+    "fields": {
+      "workout_session": 1,
+      "exercise": 1,
+      "set_number": 2,
+      "reps": 8,
+      "weight": "155.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 3,
+    "fields": {
+      "workout_session": 1,
+      "exercise": 1,
+      "set_number": 3,
+      "reps": 6,
+      "weight": "165.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 4,
+    "fields": {
+      "workout_session": 1,
+      "exercise": 4,
+      "set_number": 1,
+      "reps": 10,
+      "weight": "75.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 5,
+    "fields": {
+      "workout_session": 1,
+      "exercise": 4,
+      "set_number": 2,
+      "reps": 8,
+      "weight": "85.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 6,
+    "fields": {
+      "workout_session": 1,
+      "exercise": 6,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "50.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 7,
+    "fields": {
+      "workout_session": 1,
+      "exercise": 6,
+      "set_number": 2,
+      "reps": 10,
+      "weight": "60.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 8,
+    "fields": {
+      "workout_session": 2,
+      "exercise": 7,
+      "set_number": 1,
+      "reps": 8,
+      "weight": "0.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 9,
+    "fields": {
+      "workout_session": 2,
+      "exercise": 7,
+      "set_number": 2,
+      "reps": 6,
+      "weight": "0.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 10,
+    "fields": {
+      "workout_session": 2,
+      "exercise": 9,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "120.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 11,
+    "fields": {
+      "workout_session": 2,
+      "exercise": 9,
+      "set_number": 2,
+      "reps": 10,
+      "weight": "140.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 12,
+    "fields": {
+      "workout_session": 2,
+      "exercise": 12,
+      "set_number": 1,
+      "reps": 10,
+      "weight": "60.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 13,
+    "fields": {
+      "workout_session": 2,
+      "exercise": 13,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "30.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 14,
+    "fields": {
+      "workout_session": 3,
+      "exercise": 14,
+      "set_number": 1,
+      "reps": 10,
+      "weight": "135.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 15,
+    "fields": {
+      "workout_session": 3,
+      "exercise": 14,
+      "set_number": 2,
+      "reps": 8,
+      "weight": "185.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 16,
+    "fields": {
+      "workout_session": 3,
+      "exercise": 15,
+      "set_number": 1,
+      "reps": 10,
+      "weight": "135.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 17,
+    "fields": {
+      "workout_session": 3,
+      "exercise": 15,
+      "set_number": 2,
+      "reps": 10,
+      "weight": "185.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 18,
+    "fields": {
+      "workout_session": 3,
+      "exercise": 15,
+      "set_number": 3,
+      "reps": 8,
+      "weight": "205.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 19,
+    "fields": {
+      "workout_session": 3,
+      "exercise": 17,
+      "set_number": 1,
+      "reps": 15,
+      "weight": "90.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 20,
+    "fields": {
+      "workout_session": 3,
+      "exercise": 21,
+      "set_number": 1,
+      "reps": 15,
+      "weight": "135.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 21,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 2,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "50.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 22,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 2,
+      "set_number": 2,
+      "reps": 10,
+      "weight": "60.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 23,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 2,
+      "set_number": 3,
+      "reps": 8,
+      "weight": "70.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 24,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 3,
+      "set_number": 1,
+      "reps": 15,
+      "weight": "30.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 25,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 3,
+      "set_number": 2,
+      "reps": 12,
+      "weight": "35.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 26,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 5,
+      "set_number": 1,
+      "reps": 15,
+      "weight": "20.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 27,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 5,
+      "set_number": 2,
+      "reps": 12,
+      "weight": "25.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 28,
+    "fields": {
+      "workout_session": 4,
+      "exercise": 6,
+      "set_number": 1,
+      "reps": 15,
+      "weight": "45.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 29,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 8,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "120.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 30,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 8,
+      "set_number": 2,
+      "reps": 10,
+      "weight": "140.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 31,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 8,
+      "set_number": 3,
+      "reps": 8,
+      "weight": "150.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 32,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 10,
+      "set_number": 1,
+      "reps": 10,
+      "weight": "95.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 33,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 10,
+      "set_number": 2,
+      "reps": 8,
+      "weight": "115.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 34,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 11,
+      "set_number": 1,
+      "reps": 15,
+      "weight": "35.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 35,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 12,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "55.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 36,
+    "fields": {
+      "workout_session": 5,
+      "exercise": 13,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "30.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 37,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 18,
+      "set_number": 1,
+      "reps": 10,
+      "weight": "135.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 38,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 18,
+      "set_number": 2,
+      "reps": 8,
+      "weight": "155.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 39,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 18,
+      "set_number": 3,
+      "reps": 8,
+      "weight": "175.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 40,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 19,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "80.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 41,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 19,
+      "set_number": 2,
+      "reps": 10,
+      "weight": "90.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 42,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 20,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "135.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 43,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 20,
+      "set_number": 2,
+      "reps": 10,
+      "weight": "185.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 44,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 22,
+      "set_number": 1,
+      "reps": 5,
+      "weight": "225.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 45,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 22,
+      "set_number": 2,
+      "reps": 5,
+      "weight": "245.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 46,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 23,
+      "set_number": 1,
+      "reps": 15,
+      "weight": "60.00"
+    }
+  },
+  {
+    "model": "workout_app.workoutset",
+    "pk": 47,
+    "fields": {
+      "workout_session": 6,
+      "exercise": 24,
+      "set_number": 1,
+      "reps": 12,
+      "weight": "0.00"
+    }
+  }
+]

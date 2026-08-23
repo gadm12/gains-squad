@@ -14,6 +14,7 @@ import {
 import ExercisePage from "./Pages/ExercisePage";
 import ExerciseListPage from "./Pages/ExerciseListPage";
 import SessionHistory from "./Pages/SessionHistory";
+import SingleSessionPage from "./Pages/SingleSessionPage";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,10 @@ const router = createBrowserRouter([
         path: "history",
         element: <SessionHistory />,
       },
-
+      {
+        path: "history/:id",
+        element: <SingleSessionPage />,
+      },
       // {
       //   path: "error",
       //   element: <ErrorPage />,

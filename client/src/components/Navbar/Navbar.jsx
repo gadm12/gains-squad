@@ -35,11 +35,7 @@ export default function Navbar({ user, setUser }) {
     setSearchExercise("");
   };
 
-//   const searchExerciseByName = (name) => {
-//   return exercise.filter((item) =>
-//     item.name.toLowerCase().includes(name.toLowerCase())
-//   );
-// };
+
 
   const name = user?.split("@")[0];
   return (
@@ -54,7 +50,7 @@ export default function Navbar({ user, setUser }) {
           <WarpText
             className={gainsClass}
             text="Gains Squad"
-            color="#000000"
+            color="#FFFFFF"
             warpStrength={0.08}
             warpScale={1.7}
             speed={0.55}

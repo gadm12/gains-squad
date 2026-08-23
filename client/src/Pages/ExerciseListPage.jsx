@@ -5,8 +5,9 @@ const ExerciseListPage = () => {
 
   return (
     <>
-      <ExercisesList />
-      
+      <main className="min-h-screen px-6 py-8">
+        <ExercisesList />
+      </main>
     </>
   );
 };
