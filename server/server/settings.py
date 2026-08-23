@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "user_app",
     "workout_app",
+    "calories_app"
 ]
 
 MIDDLEWARE = [
