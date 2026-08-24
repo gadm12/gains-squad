@@ -10,6 +10,8 @@ import {
   caloriesResult,
   caloriesResultTitle,
   caloriesResultValue,
+  apiNinjasCredit,
+  apiNinjasLink,
 } from "./styles/tailwindStyles";
 
 const CaloriesCalculatorCard = ({
@@ -76,6 +78,18 @@ const CaloriesCalculatorCard = ({
           </p>
         </div>
       )}
+      <div className={apiNinjasCredit}>
+        <span>Powered by</span>
+
+        <a
+          href="https://api-ninjas.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={apiNinjasLink}
+        >
+          API Ninjas
+        </a>
+      </div>
     </div>
   );
 };

@@ -25,3 +25,13 @@ export const caloriesResultTitle =
 
 export const caloriesResultValue =
   "mt-2 text-4xl font-bold text-white";
+
+//! API Ninjas attribution
+
+export const apiNinjasCredit =
+  "mt-6 flex items-center justify-center gap-2 text-sm text-gray-400";
+
+export const apiNinjasLink =
+  "font-semibold text-white transition hover:text-yellow-500 hover:underline";
+
+
