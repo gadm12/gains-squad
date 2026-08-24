@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const exerciseLibrary = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1/workout/library/",
+  baseURL: "/api/v1/workout/library/",
 });
 
 exerciseLibrary.interceptors.request.use((config) => {

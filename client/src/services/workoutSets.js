@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const workoutSets = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1/workout/",
+  baseURL: "/api/v1/workout/",
 });
 
 workoutSets.interceptors.request.use((config) => {
@@ -42,9 +42,7 @@ export const createSet = async (sessionId, setData) => {
 
 export const loadSet = async (id) => {
   try {
-    const response = await workoutSets.get(
-      `sets/${id}/`,
-    );
+    const response = await workoutSets.get(`sets/${id}/`);
 
     return response.data;
   } catch (error) {
@@ -69,9 +67,7 @@ export const updateSet = async (id, setData) => {
 
 export const deleteSet = async (id) => {
   try {
-    await workoutSets.delete(
-      `sets/${id}/`,
-    );
+    await workoutSets.delete(`sets/${id}/`);
 
     return true;
   } catch (error) {

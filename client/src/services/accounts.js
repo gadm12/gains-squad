@@ -2,7 +2,7 @@ import axios from "axios";
 import { redirect } from "react-router-dom";
 
 export const account = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1/users/",
+  baseURL: "api/v1/users/",
 });
 
 account.interceptors.request.use((config) => {
