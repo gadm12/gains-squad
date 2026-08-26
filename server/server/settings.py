@@ -94,6 +94,33 @@ DATABASES = {
     }
 }
 
+# COOKIES
+
+SESSION_COOKIE_SECURE = (
+    os.environ.get("SESSION_COOKIE_SECURE", "False") == "True"
+)
+SESSION_COOKIE_HTTPONLY = (
+    os.environ.get("SESSION_COOKIE_HTTPONLY", "True") == "True"
+)
+CSRF_COOKIE_SECURE = (
+    os.environ.get("CSRF_COOKIE_SECURE", "False") == "True"
+)
+
+AUTH_COOKIE_SECURE = (
+    os.environ.get("AUTH_COOKIE_SECURE", "False") == "True"
+)
+
+AUTH_COOKIE_SAMESITE = os.environ.get(
+    "AUTH_COOKIE_SAMESITE", "Lax"
+)
+
+SECURE_PROXY_SSL_HEADER = (
+    "HTTP_X_FORWARDED_PROTO",
+    "https",
+)
+
+# CACHES
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -109,15 +136,15 @@ CACHES = {
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
+        "user_app.views.CookieAuthentication",
     ],
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",
         "rest_framework.throttling.UserRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
-        "anon": "100/min",
-        "user": "100/hour",
+        "anon": "10/min",
+        "user": "10/hour",
     },
 }
 

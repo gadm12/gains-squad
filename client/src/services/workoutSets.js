@@ -2,17 +2,10 @@ import axios from "axios";
 
 export const workoutSets = axios.create({
   baseURL: "/api/v1/workout/",
+  withCredentials: true,
 });
 
-workoutSets.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
 
-  if (token) {
-    config.headers.Authorization = `Token ${token}`;
-  }
-
-  return config;
-});
 
 const errorMessage = (error) => {
   const data = error.response?.data;

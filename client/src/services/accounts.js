@@ -2,15 +2,8 @@ import axios from "axios";
 import { redirect } from "react-router-dom";
 
 export const account = axios.create({
-  baseURL: "api/v1/users/",
-});
-
-account.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Token ${token}`;
-  }
-  return config;
+  baseURL: "/api/v1/users/",
+  withCredentials: true,
 });
 
 const errorMessage = (error) => {
@@ -56,12 +49,8 @@ export const logIn = async (email, password) => {
       email,
       password,
     });
-    const { user, token } = response.data;
-    localStorage.setItem("token", token);
-    return {
-      user,
-      error: null,
-    };
+
+    return response.data.user;
   } catch (error) {
     console.error(errorMessage(error));
     return {
@@ -72,16 +61,12 @@ export const logIn = async (email, password) => {
 };
 
 export const userConfirmation = async () => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    return null;
-  }
   try {
     const response = await account.get("info/");
     return response.data.email;
   } catch (error) {
     console.error(errorMessage(error));
-    localStorage.removeItem("token");
+
     return null;
   }
 };
@@ -95,19 +80,19 @@ export const userLogOut = async () => {
       errorMessage(error),
     );
   }
-  localStorage.removeItem("token");
+
   return null;
 };
 
 export const requireLogin = async () => {
-  if (!localStorage.getItem("token")) {
+  const email = await userConfirmation();
+  if (!email) {
     throw redirect("/");
   }
   return null;
 };
 
 export const redirectIfLoggedIn = async () => {
-  return localStorage.getItem("token")
-    ? redirect("home/")
-    : null;
+  const email = await userConfirmation();
+  return email ? redirect("/home") : null;
 };
