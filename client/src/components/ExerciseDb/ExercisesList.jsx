@@ -10,7 +10,7 @@ import {
   exerciseListDiv,
 } from "./styles/tailwindStyles";
 import { Link } from "react-router-dom";
-import TextType from "../ReactBits/TextType";
+import WarpText from "../ReactBits/WarpText";
 
 const ExercisesList = () => {
   const [exercise, setExercise] = useState([]);
@@ -27,7 +27,6 @@ const ExercisesList = () => {
       if (!data) {
         return;
       }
-      console.log(data.data);
       setExercise(data.data);
       setNextCursor(data.meta.nextCursor);
       setPreviousCursor(data.meta.previousCursor);
@@ -70,15 +69,22 @@ const ExercisesList = () => {
     <>
       <div className={exerciseListDiv}>
         <div className={textTypeDiv}>
-          <TextType
-            text={["Welcome to ExerciseDB Workout Library"]}
-            typingSpeed={50}
-            pauseDuration={5000}
-            showCursor
-            cursorCharacter="▎"
-            deletingSpeed={50}
-            
-            cursorBlinkDuration={0.5}
+          <WarpText
+            text="Welcome to ExerciseDB Workout Library"
+            color="#FFFFFF"
+            warpStrength={0.08}
+            warpScale={1.7}
+            speed={0.55}
+            pointerInfluence={0.42}
+            pointerStrength={0.36}
+            refraction={0.018}
+            ripple
+            fontSize={90}
+            fontWeight={800}
+            style={{ height: "10px" }}
+            fontFamily="inherit"
+            letterSpacing={-0.06}
+            lineHeight={0.93}
           />
         </div>
         <div className={exerciseDiv}>

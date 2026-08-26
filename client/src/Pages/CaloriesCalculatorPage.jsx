@@ -11,7 +11,6 @@ const CaloriesCalculatorPage = () => {
     e.preventDefault();
 
     const data = await calculateCalories(weight, duration);
-    console.log("CALORIE DATA:", data);
     if (!data) {
       return;
     }

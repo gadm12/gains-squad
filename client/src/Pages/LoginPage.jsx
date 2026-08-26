@@ -30,7 +30,6 @@ const LoginPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const result = await logIn(email, password);
-    console.log(result);
     if (result.user) {
       setUser(result.user);
       navigate("/home");

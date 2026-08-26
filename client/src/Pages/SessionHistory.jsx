@@ -12,7 +12,6 @@ const SessionHistory = () => {
       if (!data) {
         return;
       }
-      console.log(data);
       setAllSessions(data);
     };
 
