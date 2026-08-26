@@ -1,60 +1,44 @@
-from django.test import Client
 from django.urls import reverse
 from rest_framework.test import APITestCase
-import json
-from rich import print
 
 
 class TestUserInfo(APITestCase):
     def test_003_user_info(self):
-        print(
-            "\n[bright_yellow]03- user info test...[/bright_yellow]"
-        )
-
-        user = Client()
-        sign_up_response = user.post(
+        sign_up_response = self.client.post(
             reverse("signup"),
-            data={"email": "mg@mg.com", "password": "mg"},
-            content_type="application/json",
+            data={
+                "email": "mg@mg.com",
+                "password": "mg",
+            },
+            format="json",
         )
 
-        # print(
-        #     "[bright_cyan]SIGN UP STATUS:[/bright_cyan]",
-        #     sign_up_response.status_code,
-        # )
-        # print(
-        #     "[bright_cyan]SIGNUP RESPONSE:[/bright_cyan]",
-        #     sign_up_response.json(),
-        # )
+        with self.subTest("signup succeeds"):
+            self.assertEqual(
+                sign_up_response.status_code,
+                201,
+            )
 
-        response_body = json.loads(sign_up_response.content)
-
-        token = response_body["token"]
-
-        # print(
-        #     "[bold yellow]TOKEN:[/bold yellow]",
-        #     token,
-        # )
-
-        self.client.credentials(
-            HTTP_AUTHORIZATION=f"Token {response_body['token']}"
-        )
+        with self.subTest("JWT cookies are set"):
+            self.assertIn(
+                "access",
+                sign_up_response.cookies,
+            )
+            self.assertIn(
+                "refresh",
+                sign_up_response.cookies,
+            )
 
         response = self.client.get(reverse("info"))
-        # print("[bright_magenta]INFO:[/bright_magenta]", response)
 
-        try:
-            # with self.subTest():
-            self.assertEqual(response.status_code, 200)
+        with self.subTest("user info request succeeds"):
+            self.assertEqual(
+                response.status_code,
+                200,
+            )
+
+        with self.subTest("correct user is returned"):
             self.assertEqual(
                 response.json()["email"],
                 "mg@mg.com",
             )
-            print(
-                "[bold bright_green] ✅03- USER INFO TEST PASSED✅[/bold bright_green]"
-            )
-        except AssertionError:
-            print(
-                "[bold bright_red] ❌03- USER INFO TEST FAILED❌[/bold bright_red]"
-            )
-            raise

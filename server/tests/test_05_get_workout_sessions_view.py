@@ -1,33 +1,26 @@
 from django.urls import reverse
 from rest_framework.test import APITestCase
-from rest_framework.authtoken.models import Token
-from rich import print
+from rest_framework_simplejwt.tokens import RefreshToken
+
 from user_app.models import User
 from workout_app.models import WorkoutSession
 
 
 class TestGetWorkoutSessionView(APITestCase):
 
-    # * =-=-= Part 1 =-=-=
+    def authenticate_user(self, user):
+        refresh = RefreshToken.for_user(user)
+        access = str(refresh.access_token)
+
+        self.client.cookies["access"] = access
+
     def test_get_workout_sessions(self):
-        print(
-            "\n[bright_yellow]05- get workout sessions view test...[/bright_yellow]"
-        )
-
-        print(
-            "[bright_blue]    part 1 - get workout sessions...[/bright_blue]"
-        )
-
         user = User.objects.create_user(
             email="mg@mg.com",
             password="mg",
         )
 
-        token = Token.objects.create(user=user)
-
-        self.client.credentials(
-            HTTP_AUTHORIZATION=f"Token {token.key}"
-        )
+        self.authenticate_user(user)
 
         WorkoutSession.objects.create(
             user=user,
@@ -43,32 +36,25 @@ class TestGetWorkoutSessionView(APITestCase):
 
         response = self.client.get(reverse("workout_sessions"))
 
-        # print("\nSTATUS:", response.status_code)
-        # print("RESPONSE:", response.json())
-        try:
-            self.assertEqual(response.status_code, 200)
-            self.assertEqual(len(response.json()), 2)
+        with self.subTest("request succeeds"):
+            self.assertEqual(
+                response.status_code,
+                200,
+            )
+
+        with self.subTest("returns two sessions"):
+            self.assertEqual(
+                len(response.json()),
+                2,
+            )
+
+        with self.subTest("returns correct session data"):
             self.assertEqual(
                 response.json()[1]["routine"],
                 "legs",
             )
-            print(
-                "[bold bright_green]    ✅ part 1 - GET SESSIONS TEST PASSED ✅[/bold bright_green]"
-            )
 
-        except AssertionError:
-            print(
-                "[bold bright_red]    ❌ part 1 - GET SESSIONS TEST FAILED ❌[/bold bright_red]"
-            )
-            raise
-
-    # * =-=-= Part 2 =-=-=
     def test_only_returns_logged_in_users_sessions(self):
-
-        print(
-            "\n[bright_blue]    part 2 - return logged in users sessions...[/bright_blue]"
-        )
-
         user1 = User.objects.create_user(
             email="one@test.com",
             password="test",
@@ -79,11 +65,7 @@ class TestGetWorkoutSessionView(APITestCase):
             password="test",
         )
 
-        token = Token.objects.create(user=user1)
-
-        self.client.credentials(
-            HTTP_AUTHORIZATION=f"Token {token.key}"
-        )
+        self.authenticate_user(user1)
 
         WorkoutSession.objects.create(
             user=user1,
@@ -99,36 +81,31 @@ class TestGetWorkoutSessionView(APITestCase):
 
         response = self.client.get(reverse("workout_sessions"))
 
-        try:
-            self.assertEqual(response.status_code, 200)
-            self.assertEqual(len(response.json()), 1)
+        with self.subTest("request succeeds"):
+            self.assertEqual(
+                response.status_code,
+                200,
+            )
+
+        with self.subTest(
+            "returns only logged in users session"
+        ):
+            self.assertEqual(
+                len(response.json()),
+                1,
+            )
+
+        with self.subTest("returns correct users session"):
             self.assertEqual(
                 response.json()[0]["name"],
                 "User One Workout",
             )
-            print(
-                "[bold bright_green]    ✅ part 2 - RETURN LOGGED IN USERS SESSIONS PASSED ✅[/bold bright_green]"
-            )
-        except AssertionError:
-            print(
-                "[bold bright_red]    ❌ part 2 - RETURN LOGGED IN USERS SESSIONS FAILED ❌[/bold bright_red]"
-            )
-            raise
 
-    # * =-=-= Part 3 =-=-=
     def test_requires_authentication(self):
-
-        print(
-            "\n[bright_blue]    part 3 - requires authentication...[/bright_blue]"
-        )
         response = self.client.get(reverse("workout_sessions"))
-        try:
-            self.assertEqual(response.status_code, 401)
-            print(
-                "[bold bright_green]    ✅ part 3 - REQUIRES AUTHENTICATION PASSED✅[/bold bright_green]"
+
+        with self.subTest("unauthenticated request is rejected"):
+            self.assertEqual(
+                response.status_code,
+                401,
             )
-        except AssertionError:
-            print(
-                "[bold bright_red]    ❌ part 3 - REQUIRES AUTHENTICATION FAILED ❌[/bold bright_red]"
-            )
-            raise

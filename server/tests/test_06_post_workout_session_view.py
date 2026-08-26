@@ -1,29 +1,22 @@
 from django.urls import reverse
 from rest_framework.test import APITestCase
-from rest_framework.authtoken.models import Token
-from rich import print
+from rest_framework_simplejwt.tokens import RefreshToken
+
 from user_app.models import User
 from workout_app.models import WorkoutSession
 
 
 class TestPostWorkoutSessionView(APITestCase):
-
     def test_post_workout_sessions(self):
-
-        print(
-            "\n[bright_yellow]06- post workout sessions view test...[/bright_yellow]"
-        )
-
         user = User.objects.create_user(
             email="mg@mg.com",
             password="mg",
         )
 
-        token = Token.objects.create(user=user)
+        refresh = RefreshToken.for_user(user)
+        access = str(refresh.access_token)
 
-        self.client.credentials(
-            HTTP_AUTHORIZATION=f"Token {token.key}"
-        )
+        self.client.cookies["access"] = access
 
         response = self.client.post(
             reverse("workout_sessions"),
@@ -32,20 +25,30 @@ class TestPostWorkoutSessionView(APITestCase):
                 "name": "Friday",
             },
             format="json",
-        )  
-        try:
-            self.assertEqual(response.status_code, 201)
+        )
 
+        with self.subTest("session is created"):
             self.assertEqual(
-                response.json()["routine"], 
+                response.status_code,
+                201,
+            )
+
+        with self.subTest("response contains correct routine"):
+            self.assertEqual(
+                response.json()["routine"],
                 "push",
             )
-            print(
-                "[bold bright_green] ✅ test 06 - POST SESSIONS TEST PASSED ✅[/bold bright_green]"
+
+        with self.subTest("session is saved to database"):
+            self.assertEqual(
+                WorkoutSession.objects.count(),
+                1,
             )
 
-        except AssertionError:
-            print(
-                "[bold bright_red] ❌ test 06 - POST SESSIONS TEST FAILED ❌[/bold bright_red]"
+        with self.subTest("session belongs to logged in user"):
+            session = WorkoutSession.objects.first()
+
+            self.assertEqual(
+                session.user,
+                user,
             )
-            raise

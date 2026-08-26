@@ -1,53 +1,69 @@
-from django.test import Client
 from django.urls import reverse
 from rest_framework.test import APITestCase
-import json
-from rest_framework.authtoken.models import Token
-from rich import print
+from rest_framework_simplejwt.token_blacklist.models import (
+    BlacklistedToken,
+)
 
 
 class TestUserLogOut(APITestCase):
     def test_004_user_log_out(self):
-        print(
-            "\n[bright_yellow]04- user logout test...[/bright_yellow]"
-        )
-
-        user = Client()
-        sign_up_response = user.post(
+        sign_up_response = self.client.post(
             reverse("signup"),
-            data={"email": "mg@mg.com", "password": "mg"},
-            content_type="application/json",
+            data={
+                "email": "mg@mg.com",
+                "password": "mg",
+            },
+            format="json",
         )
 
-       
+        with self.subTest("signup succeeds"):
+            self.assertEqual(
+                sign_up_response.status_code,
+                201,
+            )
 
-        response_body = json.loads(sign_up_response.content)
+        with self.subTest("JWT cookies are set"):
+            self.assertIn(
+                "access",
+                sign_up_response.cookies,
+            )
+            self.assertIn(
+                "refresh",
+                sign_up_response.cookies,
+            )
 
-        token = response_body["token"]
-
-        
-
-        self.client.credentials(
-            HTTP_AUTHORIZATION=f"Token {response_body['token']}"
+        response = self.client.post(
+            reverse("logout"),
         )
-        response = self.client.post(reverse("logout"))
 
-        
-        try:
-            # with self.subTest():
+        with self.subTest("logout succeeds"):
             self.assertEqual(
                 response.status_code,
                 200,
             )
-            tokens = Token.objects.all()
-            self.assertEqual(len(tokens), 0)
 
-            print(
-                "[bold bright_green] ✅04- LOGOUT TEST PASSED✅[/bold bright_green]"
+        with self.subTest("auth cookies are cleared"):
+            self.assertEqual(
+                response.cookies["access"]["max-age"],
+                0,
+            )
+            self.assertEqual(
+                response.cookies["refresh"]["max-age"],
+                0,
             )
 
-        except AssertionError:
-            print(
-                "[bold bright_red] ❌04- LOGOUT TEST FAILED❌[/bold bright_red]"
+        with self.subTest("refresh token is blacklisted"):
+            self.assertEqual(
+                BlacklistedToken.objects.count(),
+                1,
             )
-            raise
+
+        response = self.client.get(
+            reverse("info"),
+        )
+
+        with self.subTest("protected route is blocked after logout"):
+            self.assertEqual(
+                response.status_code,
+                401,
+            )
