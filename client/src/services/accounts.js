@@ -50,7 +50,7 @@ export const logIn = async (email, password) => {
       password,
     });
 
-    return response.data.user;
+    return { user: response.data.user, error: null };
   } catch (error) {
     console.error(errorMessage(error));
     return {
