@@ -3,7 +3,6 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
-from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from .serializers import UserSerializer
 from django.conf import settings
@@ -24,12 +23,7 @@ def set_token_cookie(response, token_key):
     return response
 
 
-class CookieAuthentication(TokenAuthentication):
-    def authenticate(self, request):
-        token_key = request.COOKIES.get("token")
-        if not token_key:
-            return None
-        return self.authenticate_credentials(token_key)
+
 
 
 class SignUp(APIView):
@@ -71,7 +65,6 @@ class LogIn(APIView):
 
 
 class UserView(APIView):
-    authentication_classes = [CookieAuthentication]
     permission_classes = [IsAuthenticated]
 
 
