@@ -1,5 +1,6 @@
-
-from rest_framework_simplejwt import JWTAuthentication
+from rest_framework_simplejwt.authentication import (
+    JWTAuthentication,
+)
 
 
 class JWTCookieAuthentication(JWTAuthentication):
