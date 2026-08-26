@@ -7,6 +7,7 @@ Django==6.1
 django-cors-headers==4.9.0
 django-redis==7.0.0
 djangorestframework==3.18.0
+djangorestframework_simplejwt==5.5.1
 gunicorn==26.0.0
 idna==3.18
 isort==8.0.1
@@ -20,6 +21,7 @@ platformdirs==4.11.2
 psycopg==3.3.4
 psycopg-binary==3.3.4
 Pygments==2.20.0
+PyJWT==2.13.0
 pylint==4.0.7
 pylint-django==2.8.0
 pylint-plugin-utils==0.9.0

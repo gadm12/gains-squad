@@ -1,11 +1,14 @@
-from rest_framework.authentication import TokenAuthentication
+
+from rest_framework_simplejwt import JWTAuthentication
 
 
-class CookieAuthentication(TokenAuthentication):
+class JWTCookieAuthentication(JWTAuthentication):
     def authenticate(self, request):
-        token_key = request.COOKIES.get("token")
+        raw_token = request.COOKIES.get("access")
 
-        if not token_key:
+        if not raw_token:
             return None
 
-        return self.authenticate_credentials(token_key)
+        validated_token = self.get_validated_token(raw_token)
+
+        return self.get_user(validated_token), validated_token
