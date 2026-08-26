@@ -11,12 +11,17 @@ function App() {
   const [user, setUser] = useState(loaderUser);
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Navbar user={user} setUser={setUser} />
+
       {user && <Sidebar />}
-      <Outlet context={{ user, setUser }} />
+
+      <main className="flex-1">
+        <Outlet context={{ user, setUser }} />
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
 

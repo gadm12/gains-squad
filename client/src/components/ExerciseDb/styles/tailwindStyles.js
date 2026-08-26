@@ -3,8 +3,7 @@
 export const exerciseListDiv =
   "flex flex-col items-center gap-6";
 
-export const textTypeDiv =
-  "text-center text-4xl font-bold text-yellow-500";
+export const textTypeDiv = "w-full max-w-5xl text-center";
 
 export const exerciseDiv =
   "rounded-lg border-4 border-yellow-700 p-6 text-white";

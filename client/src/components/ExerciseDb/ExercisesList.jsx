@@ -81,7 +81,10 @@ const ExercisesList = () => {
             ripple
             fontSize={90}
             fontWeight={800}
-            style={{ height: "10px" }}
+            style={{
+              height: "140px",
+              width: "100%",
+            }}
             fontFamily="inherit"
             letterSpacing={-0.06}
             lineHeight={0.93}

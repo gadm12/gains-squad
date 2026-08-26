@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 import SessionHistory from "./SessionHistory";
 
 const HomePage = () => {
@@ -5,6 +6,7 @@ const HomePage = () => {
     <main className="flex min-h-screen justify-center">
       <div className="mt-20">
         <SessionHistory />
+        <Footer />
       </div>
     </main>
   );
