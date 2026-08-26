@@ -3,6 +3,7 @@ import {
   useLocation,
   useNavigate,
   Link,
+  useOutletContext,
 } from "react-router-dom";
 import { useState } from "react";
 import { signUp } from "../services/accounts";
@@ -22,6 +23,7 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { setUser } = useOutletContext();
 
   const isSignup = pathname === "/signup";
 
@@ -31,6 +33,7 @@ const SignupPage = () => {
     const result = await signUp(email, password);
 
     if (result.user) {
+      setUser(result.user);
       navigate("/");
     }
   };
