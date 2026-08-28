@@ -2,6 +2,7 @@ services:
   db:
     build: ./db
     container_name: db-container
+    restart: unless-stopped
     env_file:
       - ./server/.env
     volumes:
@@ -10,32 +11,27 @@ services:
   redis:
     image: redis:7
     container_name: redis-container
+    restart: unless-stopped
 
   backend:
     build: ./server
     container_name: django-container
-    command: python manage.py runserver 0.0.0.0:8000
+    restart: unless-stopped
     env_file:
       - ./server/.env
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./server:/app
     depends_on:
       - db
       - redis
 
   frontend:
-    build:
-      context: ./client
-      target: build
+    build: ./client
     container_name: react-container
-    command: npm run dev -- --host 0.0.0.0
+    restart: unless-stopped
     ports:
-      - "5173:5173"
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./client:/app
-      - /app/node_modules
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - backend
 
